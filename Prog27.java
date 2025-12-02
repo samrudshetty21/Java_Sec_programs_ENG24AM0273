@@ -1,0 +1,23 @@
+class FinalizeExample {
+    int num;
+
+    FinalizeExample(int n) {
+        num = n;
+        System.out.println("Object " + num + " created");
+    }
+
+    protected void finalize() {
+        System.out.println("finalize() called for object " + num);
+    }
+
+    public static void main(String[] args) {
+        FinalizeExample obj1 = new FinalizeExample(1);
+        FinalizeExample obj2 = new FinalizeExample(2);
+
+        obj1 = null;
+        obj2 = null;
+
+        System.gc();
+        System.out.println("End of main method");
+    }
+}
